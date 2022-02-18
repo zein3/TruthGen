@@ -42,10 +42,11 @@
 | goBack         |                    |           |                                                                         |
 | hasMoreTokens  |                    | boolean   |                                                                         |
 | tokenType      |                    | TokenType | get type of the token at current index                                  |
-| getValue       |                    | boolean   | get value at current index. Only works if current token is VALUE.       |
+| getValue       |                    | boolean   | get value at current index. Only works if current token is IMMEDIATE.   |
 | getOperator    |                    | Operator  | get operator at current index.                                          |
+| getSymbol      |                    | char      | get the symbol at the current index.                                    |
 
-TokenType = {IMM, UNARYOP, BINARYOP}
+TokenType = {IMM, UNARYOP, BINARYOP, SYMBOL}
 Operator = {AND, OR, NOT, IF, EQ}
 ### Permuter inherit from Variable Table
 Description: Permute variables from all true to all false and manages variable.
@@ -67,7 +68,7 @@ Description: Permute variables from all true to all false and manages variable.
 Description: calculate the result of an expression (can not calculate variables).
 | function name  | parameters         | output  | note                                                       |
 | ---            | ---                | ---     | ---                                                        |
-| constructor    |                    |         | initialize parser.                                         |
+| constructor    |                    |         | initialize scanner.                                        |
 | calculateTruth | expression: string | boolean | no variables in expression, only operators and imm values. |
 ### Truth Generator
 Description: Orchestrate the whole process.

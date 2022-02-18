@@ -25,6 +25,8 @@ TokenType Scanner::tokenType() {
             return TokenType::UNARYOP;
         case '^': case '&': case 'v': case '|': case '>': case '=':
             return TokenType::BINARYOP;
+        case '(': case ')':
+            return TokenType::SYMBOL;
         default:
             // TODO create a custom exception
             throw std::runtime_error(std::string("Unknown token: " + std::string(tokens[tokenIndex], 1)));
@@ -63,6 +65,13 @@ Operator Scanner::getOperator() {
             // TODO create a custom exception
             throw std::runtime_error(std::string("Expected operator. Got " + std::string(tokens[tokenIndex], 1)));
     }
+}
+
+char Scanner::getSymbol() {
+    if (tokenType() != TokenType::SYMBOL) {
+        throw std::runtime_error(std::string("Expected symbol. Got " + std::string(tokens[tokenIndex], 1)));
+    }
+    return tokens[tokenIndex];
 }
 
 void Scanner::tokenize(std::string &exp) {

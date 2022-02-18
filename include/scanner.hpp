@@ -6,7 +6,7 @@
 
 
 enum class TokenType {
-    IMM, UNARYOP, BINARYOP
+    IMM, UNARYOP, BINARYOP, SYMBOL
 };
 
 enum class Operator {
@@ -23,6 +23,7 @@ public:
     bool hasMoreTokens();
     bool getValue();
     Operator getOperator();
+    char getSymbol();
 private:
     size_t tokenIndex = 0;
     std::vector<char> tokens;

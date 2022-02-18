@@ -6,7 +6,8 @@ int main() {
     try {
 
     } catch (std::exception &err) {
-        std::cout << "ERROR: " << err.what() << std::endl;
+        std::cout << "Oops! something went wrong." << std::endl;
+        std::cerr << "ERROR: " << err.what() << std::endl;
         return EXIT_FAILURE;
     }
 
