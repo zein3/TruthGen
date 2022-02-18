@@ -13,6 +13,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Build and test
-      run: mkdir build && cd build && cmake ../ && make && ctest
+    - name: Build
+      run: mkdir build && cd build && cmake ../ && make
+
+    - name: Test
+      run: cd build && ctest
 
