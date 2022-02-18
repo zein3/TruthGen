@@ -13,8 +13,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Build
-      run: mkdir build && cd build && cmake ../ && make
+    - name: Build and test
+      run: mkdir build && cd build && cmake ../ && make && ctest
 
-    - name: Test
-      run: ./tests/tests
