@@ -16,16 +16,25 @@ TEST(PermuterTest, BasicTest) {
     EXPECT_EQ(p.getExpression(), "T&T");
 }
 
-//TEST(PermuterTest, FullTest) {
-    //std::string input = "a&b";
-    //Permuter p(input);
+TEST(PermuterTest, FullTest) {
+    std::string input = "a&b";
+    Permuter p(input);
 
-    //EXPECT_EQ(p.getExpression(), "T&T");
-    //p.permute();
-    //EXPECT_EQ(p.getExpression(), "T&F");
-    //p.permute();
-    //EXPECT_EQ(p.getExpression(), "F&T");
-    //p.permute();
-    //EXPECT_EQ(p.getExpression(), "F&F");
-    //EXPECT_EQ(p.canPermute(), false);
-//}
+    EXPECT_EQ(p.getExpression(), "T&T");
+    p.permute();
+    EXPECT_EQ(p.getExpression(), "T&F");
+    p.permute();
+    EXPECT_EQ(p.getExpression(), "F&T");
+    p.permute();
+    EXPECT_EQ(p.getExpression(), "F&F");
+    EXPECT_EQ(p.canPermute(), false);
+}
+
+TEST(PermuterTest, ComplexTest) {
+    std::string input = "a| b &(c | d)";
+    Permuter p(input);
+
+    EXPECT_EQ(p.getExpression(), "T| T &(T | T)");
+    while(p.canPermute()) p.permute();
+    EXPECT_EQ(p.getExpression(), "F| F &(F | F)");
+}

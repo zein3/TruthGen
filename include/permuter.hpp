@@ -13,9 +13,28 @@
  */
 class Permuter : private VariableTable {
 public:
+    /**
+     * Constructor.
+     * @param exp reference to expression to be permuted
+     */
     Permuter(std::string &exp);
+
+    /**
+     * Get the expression with all the variables replaced with true or false value.
+     * @return expression that can be processed by scanner.
+     */
     std::string getExpression();
+
+    /**
+     * 'Permute' the expression.
+     */
     void permute();
+
+    /**
+     * Checks whether the expression can be 'permuted'.
+     * If all the variables are false then the expression can no longer be 'permuted'.
+     * @return whether the expression can be permuted or not.
+     */
     bool canPermute();
 private:
     std::string &expression;

@@ -2,13 +2,24 @@
 #include "scanner.hpp"
 
 
-TEST(ScannerTest, Basic) {
+TEST(ScannerTest, HandleNoInput) {
     Scanner sc;
     EXPECT_EQ(sc.hasMoreTokens(), false);
-    EXPECT_EQ(3 * 4, 12);
 }
 
-TEST(ScannerTest, ShouldFail) {
+TEST(ScannerTest, BasicTest) {
+    std::string input = "T&T";
     Scanner sc;
+    sc.loadExpression(input);
+
+    EXPECT_EQ(sc.tokenType(), TokenType::IMM);
+    EXPECT_EQ(sc.getValue(), true);
+
+    sc.advance();
+
+    EXPECT_EQ(sc.tokenType(), TokenType::BINARYOP);
+    EXPECT_EQ(sc.getOperator(), Operator::AND);
+
+    sc.advance();
     EXPECT_EQ(sc.hasMoreTokens(), false);
 }

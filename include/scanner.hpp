@@ -5,18 +5,21 @@
 #include <vector>
 
 
+enum class TokenType {
+    IMM, UNARYOP, BINARYOP
+};
+
+enum class Operator {
+    AND, OR, NOT, IF, EQ
+};
+
+
 class Scanner {
 public:
-    enum TokenType {
-        IMM, UNARYOP, BINARYOP
-    };
-    enum Operator {
-        AND, OR, NOT, IF, EQ
-    };
-
-    void loadExpression(std::string exp);
+    void loadExpression(std::string &exp);
     void advance();
     void goBack();
+    TokenType tokenType();
     bool hasMoreTokens();
     bool getValue();
     Operator getOperator();

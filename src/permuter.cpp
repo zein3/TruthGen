@@ -16,6 +16,24 @@ std::string Permuter::getExpression() {
 }
 
 void Permuter::permute() {
+    char lastVar = getVariables().back();
+    // if the last expression is true, then just set it to false
+    if (getVariableValue(lastVar)) {
+        setVariableValue(lastVar, false);
+    } else {
+        // set last expression to true
+        setVariableValue(lastVar, true);
+        // then iterate from back to front (while setting value to true) until a variable with true value is found
+        // once it is found, set that variable to false
+        for(auto it = getVariables().rbegin()+1; it != getVariables().rend(); it++) {
+            if (getVariableValue(*it)) {
+                setVariableValue(*it, false);
+                break;
+            } else {
+                setVariableValue(*it, true);
+            }
+        }
+    }
 }
 
 bool Permuter::canPermute() {
