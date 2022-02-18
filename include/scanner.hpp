@@ -26,6 +26,8 @@ public:
 private:
     size_t tokenIndex = 0;
     std::vector<char> tokens;
+
+    void tokenize(std::string &exp);
 };
 
 #endif

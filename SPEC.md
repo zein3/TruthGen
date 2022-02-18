@@ -14,13 +14,14 @@
 
 
 ## Binary Operator
-| symbol | meaning     |
-| ---    | ---         |
-| ^      | And         |
-| &      | And         |
-| v      | Or          |
-| >      | Implication |
-| =      | Equivalence |
+| symbol      | meaning     |
+| ---         | ---         |
+| ^           | And         |
+| &           | And         |
+| v           | Or          |
+| vetical bar | Or          |
+| >           | Implication |
+| =           | Equivalence |
 
 
 ## Unary Operator
