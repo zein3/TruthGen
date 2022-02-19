@@ -5,11 +5,19 @@
 #include "truthcalc.hpp"
 
 
+/**
+ * Generates a truth table.
+ * Orchestrate TruthCalculator and permuter to generate a truth table.
+ */
 class TruthGenerator {
 public:
     TruthGenerator(TruthGenerator const &) = delete;
     void operator=(TruthGenerator const &) = delete;
 
+    /**
+     * Get singleton instance of this class.
+     * @return singleton
+     */
     static TruthGenerator& getInstance();
 
     /**
