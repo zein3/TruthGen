@@ -6,7 +6,7 @@ void loop() {
     std::string input;
     while(true) {
         std::cout << ">>> ";
-        std::cin >> input;
+        std::getline(std::cin, input);
 
         if (input == "quit" || input == "exit") {
             break;
