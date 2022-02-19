@@ -1,15 +1,31 @@
+#include "truthgenerator.hpp"
 #include <iostream>
 
 
-int main() {
-    std::cout << "Hello, world!" << std::endl;
-    try {
+void loop() {
+    std::string input;
+    while(true) {
+        std::cout << ">>> ";
+        std::cin >> input;
 
-    } catch (std::exception &err) {
-        std::cout << "Oops! something went wrong." << std::endl;
-        std::cerr << "ERROR: " << err.what() << std::endl;
-        return EXIT_FAILURE;
+        if (input == "quit" || input == "exit") {
+            break;
+        }
+
+        bool result = TruthGenerator::getInstance().generateTruthTable(input, std::cout);
+        if (!result) {
+            std::cout << "Encountered an error! press 'exit' or 'quit' to quit" << std::endl;
+        }
+    }
+}
+
+int main(int argc, char **argv) {
+    if (argc < 2) {
+        loop();
+        return EXIT_SUCCESS;
     }
 
-    return EXIT_SUCCESS;
+    std::string input (argv[1]);
+    bool result = TruthGenerator::getInstance().generateTruthTable(input, std::cout);
+    return (result) ? EXIT_SUCCESS : EXIT_FAILURE;
 }

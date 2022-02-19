@@ -11,7 +11,7 @@
  * Initialize all variables to true, and permute through them until all
  * of the variables have the value false.
  */
-class Permuter : private VariableTable {
+class Permuter : public VariableTable {
 public:
     /**
      * Constructor.
