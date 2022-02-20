@@ -1,11 +1,18 @@
 #include "truthcalc.hpp"
 #include <stdexcept>
+#include <iostream>
 
 
 bool TruthCalculator::calculateTruth(std::string exp) {
     currentExpression = exp;
     scanner.loadExpression(currentExpression);
-    return calculateExpression();
+    bool result = calculateExpression();
+
+    if (scanner.hasMoreTokens()) {
+        throw std::runtime_error("Unused token");
+    }
+
+    return result;
 }
 
 bool TruthCalculator::calculateExpression() {
@@ -16,24 +23,22 @@ bool TruthCalculator::calculateExpression() {
             scanner.advance();
             break;
         case TokenType::BINARYOP:
-            // TODO create custom exception
-            throw std::runtime_error("Unexpected operator");
+            throw std::runtime_error("Unexpected operator: " + std::string(1, scanner.getSymbol()));
         case TokenType::UNARYOP:
             scanner.advance();
             // since there is only 1 type of unary operator, it can be deduced here
             returnVal = !calculateExpression();
             break;
         case TokenType::SYMBOL:
-            // TODO create custom exception
             if (scanner.getSymbol() != '(') {
-                throw std::runtime_error("Expected (");
+                throw std::runtime_error("Expected (. Got: " + std::string(1, scanner.getSymbol()));
             }
 
             scanner.advance();
             returnVal = calculateExpression();
 
             if (scanner.getSymbol() != ')') {
-                throw std::runtime_error("Expected )");
+                throw std::runtime_error("Expected ). Got: " + std::string(1, scanner.getSymbol()));
             }
 
             scanner.advance();

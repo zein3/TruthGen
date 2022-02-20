@@ -4,10 +4,8 @@
 
 void loop() {
     std::string input;
-    while(true) {
-        std::cout << ">>> ";
-        std::getline(std::cin, input);
-
+    std::cout << ">>> ";
+    while(std::getline(std::cin, input)) {
         if (input == "quit" || input == "exit") {
             break;
         }
@@ -16,6 +14,8 @@ void loop() {
         if (!result) {
             std::cout << "Encountered an error! press 'exit' or 'quit' to quit" << std::endl;
         }
+
+        std::cout << ">>> ";
     }
 }
 

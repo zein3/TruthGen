@@ -28,8 +28,7 @@ TokenType Scanner::tokenType() {
         case '(': case ')':
             return TokenType::SYMBOL;
         default:
-            // TODO create a custom exception
-            throw std::runtime_error(std::string("Unknown token: " + std::string(tokens[tokenIndex], 1)));
+            throw std::runtime_error("Unknown token at: " + std::string(1, tokens[tokenIndex]));
     }
 }
 
@@ -44,8 +43,7 @@ bool Scanner::getValue() {
         case 'F':
             return false;
         default:
-            // TODO create a custom exception
-            throw std::runtime_error(std::string("Expected value. Got " + std::string(tokens[tokenIndex], 1)));
+            throw std::runtime_error("Expected immediate value. Got: " + std::string(1, tokens[tokenIndex]));
     }
 }
 
@@ -62,15 +60,11 @@ Operator Scanner::getOperator() {
         case '!': case '~':
             return Operator::NOT;
         default:
-            // TODO create a custom exception
-            throw std::runtime_error(std::string("Expected operator. Got " + std::string(tokens[tokenIndex], 1)));
+            throw std::runtime_error("Expected operator. Got: " + std::string(1, tokens[tokenIndex]));
     }
 }
 
 char Scanner::getSymbol() {
-    if (tokenType() != TokenType::SYMBOL) {
-        throw std::runtime_error(std::string("Expected symbol. Got " + std::string(tokens[tokenIndex], 1)));
-    }
     return tokens[tokenIndex];
 }
 

@@ -31,7 +31,7 @@ bool TruthGenerator::generateTruthTable(std::string &exp, std::ostream &output) 
             out << (calculator.calculateTruth(permuter.getExpression()) ? 'T' : 'F') << std::endl;
         } catch (std::exception &err) {
             std::cout << "Oops! something went wrong." << std::endl;
-            std::cerr << "TRUTH CALCULATOR ERROR: " << err.what() << std::endl;
+            std::cerr << "ERROR! " << err.what() << std::endl;
             return false;
         }
 
