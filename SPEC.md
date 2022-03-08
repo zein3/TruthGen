@@ -2,15 +2,15 @@
 
 
 ## Expression
-| exp (expression) | exp {binaryOp exp}*      |
-|                  | (exp)                    |
-|                  | unaryOp exp              |
-|                  | var                      |
-|                  | immediate value          |
-| immediate value  | 'T' or 'F'               |
-| var              | letters (not T or F)     |
-| binaryOp         | Refer to Binary Operator |
-| unaryOp          | Refer to Unary Operator  |
+| exp (expression) | exp {binaryOp exp}*       |
+|                  | (exp)                     |
+|                  | unaryOp exp               |
+|                  | var                       |
+|                  | immediate value           |
+| immediate value  | 'T' or 'F'                |
+| var              | letters (not T or F or v) |
+| binaryOp         | Refer to Binary Operator  |
+| unaryOp          | Refer to Unary Operator   |
 
 
 ## Binary Operator

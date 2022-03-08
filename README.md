@@ -32,4 +32,4 @@ F   F   T
 
 
 ### Note on variables
-A variable must be an upper or lower case letter and cannot be uppercase T or uppercase F.
+A variable must be an upper or lower case letter and cannot be uppercase T or uppercase F or lowercase v.

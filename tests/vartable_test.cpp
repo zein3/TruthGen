@@ -55,3 +55,9 @@ TEST(VariableTable, CanSetVariable) {
 
     EXPECT_EQ(vt.getVariableValue('a'), false);
 }
+
+TEST(VariableTable, IgnoreSmallV) {
+    std::string input = "a v b v c";
+    VariableTable vt(input);
+    EXPECT_EQ(vt.getVariables().size(), 3);
+}

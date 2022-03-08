@@ -26,8 +26,15 @@ bool TruthCalculator::calculateExpression() {
             throw std::runtime_error("Unexpected operator: " + std::string(1, scanner.getSymbol()));
         case TokenType::UNARYOP:
             scanner.advance();
-            // since there is only 1 type of unary operator, it can be deduced here
-            returnVal = !calculateExpression();
+            // edge case, if it is just an immediate value, immediately calculate the result
+            if (scanner.tokenType() == TokenType::IMM) {
+                returnVal = !scanner.getValue();
+                scanner.advance();
+            }
+            else {
+                // since there is only 1 type of unary operator, it can be deduced here
+                returnVal = !calculateExpression();
+            }
             break;
         case TokenType::SYMBOL:
             if (scanner.getSymbol() != '(') {

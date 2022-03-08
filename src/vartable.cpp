@@ -3,7 +3,7 @@
 
 VariableTable::VariableTable(std::string &exp) {
     for (auto c : exp) {
-        if (isalpha(c) && c != 'T' && c != 'F' &&  table.count(c) == 0) {
+        if (isalpha(c) && c != 'T' && c != 'F' && c != 'v' &&  table.count(c) == 0) {
             table.insert( std::pair<char, bool>(c, true) );
             variables.push_back(c);
         }
