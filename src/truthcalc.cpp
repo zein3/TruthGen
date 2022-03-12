@@ -6,7 +6,7 @@
 bool TruthCalculator::calculateTruth(std::string exp) {
     currentExpression = exp;
     scanner.loadExpression(currentExpression);
-    bool result = calculateExpression();
+    bool result = calculateExpression(true);
 
     if (scanner.hasMoreTokens()) {
         throw std::runtime_error("Unused token");
@@ -15,7 +15,7 @@ bool TruthCalculator::calculateTruth(std::string exp) {
     return result;
 }
 
-bool TruthCalculator::calculateExpression() {
+bool TruthCalculator::calculateExpression(bool isRoot) {
     bool returnVal;
     switch(scanner.tokenType()) {
         case TokenType::IMM:
@@ -49,7 +49,8 @@ bool TruthCalculator::calculateExpression() {
             }
 
             scanner.advance();
-            break;
+            if (isRoot) break;
+            else return returnVal;
     }
 
     // while there is binary operator

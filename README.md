@@ -8,9 +8,6 @@ git clone https://github.com/zein3/TruthGen.git && cd TruthGen
 mkdir build && cd build
 cmake ../
 make
-```
-And then:
-```
 sudo make install
 ```
 

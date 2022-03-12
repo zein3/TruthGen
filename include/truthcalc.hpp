@@ -20,7 +20,7 @@ private:
     Scanner scanner;
     std::string currentExpression;
 
-    bool calculateExpression();
+    bool calculateExpression(bool isRoot = false);
 };
 
 #endif

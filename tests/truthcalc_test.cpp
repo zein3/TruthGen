@@ -24,4 +24,7 @@ TEST_F(TruthCalculatorTest, MoreTests) {
     EXPECT_EQ(calc.calculateTruth("~T v F"), false);
     EXPECT_EQ(calc.calculateTruth("TvF"), true);
     EXPECT_EQ(calc.calculateTruth("~T v T"), true);
+    EXPECT_EQ(calc.calculateTruth("~(T v T) > ~F"), true);
+    EXPECT_EQ(calc.calculateTruth("~(F v F) > F"), false);
+    EXPECT_EQ(calc.calculateTruth("(~T v ~T) > ~F"), true);
 }

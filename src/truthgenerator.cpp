@@ -15,7 +15,7 @@ bool TruthGenerator::generateTruthTable(std::string &exp, std::ostream &output) 
 
     // generate table header
     for (auto var : permuter.getVariables()) {
-        out << var << " ";
+        out << var << " | ";
     }
     out << exp << std::endl;
 
@@ -23,7 +23,7 @@ bool TruthGenerator::generateTruthTable(std::string &exp, std::ostream &output) 
     while (true) {
         // generate current permutation's variables' values
         for (auto var : permuter.getVariables()) {
-            out << (permuter.getVariableValue(var) ? 'T' : 'F') << " ";
+            out << (permuter.getVariableValue(var) ? 'T' : 'F') << " | ";
         }
 
         // generate current permutation's result
